@@ -29,32 +29,7 @@ License: GPL2
  * Set up the autoloader.
  */
 
-set_include_path(get_include_path() . PATH_SEPARATOR . realpath(dirname(__FILE__) . '/lib/'));
-
-spl_autoload_extensions('.class.php');
-
-if (! function_exists('buffered_autoloader')) {
-	
-	function buffered_autoloader ($c) {
-
-		try {
-		
-			spl_autoload($c);
-			
-		} catch (Exception $e) {
-			
-			$message = $e->getMessage();
-			
-			return $message;
-			
-		}
-		
-
-	}
-	
-}
-
-spl_autoload_register('buffered_autoloader');
+require dirname(__FILE__) . "/lib/ns_tmo_plugin.class.php";
 
 /**
  * Get the plugin object. All the bookkeeping and other setup stuff happens here.
